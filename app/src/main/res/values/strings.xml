@@ -4,4 +4,10 @@
     <string name="seja_bem_vindo_a">Seja Bem-Vindo(a)</string>
     <string name="textHealthProfile">Descubra seu perfil de saúde e receba recomendações personalizadas</string>
     <string name="comece_aqui">Comece aqui</string>
+    <string name="nome_completo">Nome Completo</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+    <string name="idade">Idade</string>
+    <string name="peso">Peso</string>
+    <string name="altura">Altura</string>
 </resources>
