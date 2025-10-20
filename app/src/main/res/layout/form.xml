@@ -74,4 +74,11 @@
         android:layout_width="282dp"
         android:layout_height="wrap_content"
         />
+    <Button
+        android:id="@+id/btCalculoImc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/calcular_imc"
+        android:layout_marginStart="10dp"/>
 </LinearLayout>
