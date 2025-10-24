@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,5 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.btComeceAqui.setOnClickListener {
+            val formIntent = Intent(this, FormActivity::class.java)
+            startActivity(formIntent)
+        }
     }
 }
