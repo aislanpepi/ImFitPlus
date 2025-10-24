@@ -5,15 +5,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityMainBinding
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.FormBinding
 
-class MainActivity : AppCompatActivity() {
+class FormActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
+    private lateinit var binding: FormBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = FormBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
     }
