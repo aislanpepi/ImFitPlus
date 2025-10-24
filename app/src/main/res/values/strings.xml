@@ -16,4 +16,6 @@
     <string name="categoria">Categoria</string>
     <string name="calcular_gasto_cal_rico">Calcular Gasto Calórico</string>
     <string name="voltar">Voltar</string>
+    <string name="gasto_cal_rico_di_rio">Gasto Calórico Diário</string>
+    <string name="calcular_peso_ideal">Calcular Peso ideal</string>
 </resources>
