@@ -11,4 +11,9 @@
     <string name="peso">Peso</string>
     <string name="altura">Altura</string>
     <string name="calcular_imc">Calcular IMC</string>
+    <string name="resultado_do_teste_imc">Resultado do Teste IMC</string>
+    <string name="imc">IMC</string>
+    <string name="categoria">Categoria</string>
+    <string name="calcular_gasto_cal_rico">Calcular Gasto Calórico</string>
+    <string name="voltar">Voltar</string>
 </resources>
