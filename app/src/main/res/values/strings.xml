@@ -18,4 +18,5 @@
     <string name="voltar">Voltar</string>
     <string name="gasto_cal_rico_di_rio">Gasto Calórico Diário</string>
     <string name="calcular_peso_ideal">Calcular Peso ideal</string>
+    <string name="peso_ideal">Peso Ideal</string>
 </resources>
