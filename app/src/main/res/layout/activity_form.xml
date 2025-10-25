@@ -70,7 +70,7 @@
             />
     </GridLayout>
     <Spinner
-        android:id="@+id/spinnerAividade"
+        android:id="@+id/spinnerAtividade"
         android:layout_marginStart="10dp"
         android:layout_width="282dp"
         android:layout_height="wrap_content"
