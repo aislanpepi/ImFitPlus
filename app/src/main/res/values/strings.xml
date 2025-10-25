@@ -19,4 +19,6 @@
     <string name="gasto_cal_rico_di_rio">Gasto Calórico Diário</string>
     <string name="calcular_peso_ideal">Calcular Peso ideal</string>
     <string name="peso_ideal">Peso Ideal</string>
+    <string name="gasto_calorico_ideal">Gasto Calórico Diario Ideal: %.2f</string>+
+    <string name="nome_completo_variable">Nome Completo: %s</string>
 </resources>

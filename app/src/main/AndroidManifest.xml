@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImFitPlus">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".FormActivity"
             android:exported="true">
             <intent-filter>
@@ -27,6 +29,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".ResultFormActivity"
             android:exported="true">
             <intent-filter>
@@ -34,6 +37,15 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".ResultCaloricActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="RESULT_CALORIC"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

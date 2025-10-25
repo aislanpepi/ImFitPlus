@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityFormBinding
-import java.lang.Math.pow
 import kotlin.math.pow
 
 class FormActivity : AppCompatActivity() {
@@ -39,9 +38,10 @@ class FormActivity : AppCompatActivity() {
             usuario.putString("nome_completo",binding.etNomeCompleto.text.toString())
             usuario.putDouble("imc",imc)
             usuario.putString("nivel_atividade",binding.spinnerAtividade.selectedItem.toString())
+            usuario.putInt("idade", binding.etIdade.text.toString().toInt())
             usuario.putString("sexo",if(binding.rbMasculino.isChecked) binding.rbMasculino.text.toString() else binding.rbFeminino.text.toString())
-            usuario.putString("peso",binding.etPeso.text.toString())
-            usuario.putString("altura",binding.etAltura.toString())
+            usuario.putDouble("peso",binding.etPeso.text.toString().toDouble())
+            usuario.putDouble("altura",binding.etAltura.text.toString().toDouble())
             resultFormIntent.putExtras(usuario)
 
             startActivity(resultFormIntent)
