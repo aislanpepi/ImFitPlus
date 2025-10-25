@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
 
+import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.view.View
@@ -11,11 +12,11 @@ class ResultFormActivity: AppCompatActivity() {
     private lateinit var binding: ActivityResultFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val imcFormat = DecimalFormat("##.##")
-        val nome = intent.extras?.getString("nome_completo")
-        val imc = intent.extras?.getDouble("imc")
-        val nivelAtividade = intent.extras?.getString("nivel_atividade")
 
+        val extras = intent.extras!!
+        val imcFormat = DecimalFormat("##.##")
+        val nome = extras.getString("nome_completo")
+        val imc = extras.getDouble("imc")
 
         super.onCreate(savedInstanceState)
         binding = ActivityResultFormBinding.inflate(layoutInflater)
@@ -24,6 +25,11 @@ class ResultFormActivity: AppCompatActivity() {
         binding.tvImc.text = imcFormat.format(imc)
         binding.tvCategoriaImc.text = getImcCategory(imcFormat.format(imc))
         setContentView(view)
+
+        binding.btCalculoGastoCalorico.setOnClickListener {
+            val resulCaloricIntent = Intent(this, ResultCaloricActivity::class.java)
+            resulCaloricIntent.putExtras(extras)
+        }
     }
 
     fun getImcCategory(imc: String): String {

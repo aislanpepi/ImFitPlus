@@ -32,11 +32,18 @@ class FormActivity : AppCompatActivity() {
         }
 
         binding.btCalculoImc.setOnClickListener {
-            val imc = binding.etPeso.text.toString().toFloat() / binding.etAltura.text.toString().toDouble().pow(2.0)
+            val imc = binding.etPeso.text.toString().toDouble() / binding.etAltura.text.toString().toDouble().pow(2.0)
             val resultFormIntent = Intent(this, ResultFormActivity::class.java)
-            resultFormIntent.putExtra("nome_completo",binding.etNomeCompleto.text.toString())
-            resultFormIntent.putExtra("imc",imc)
-            resultFormIntent.putExtra("nivel_atividade",binding.spinnerAtividade.selectedItem.toString())
+            val usuario = Bundle()
+
+            usuario.putString("nome_completo",binding.etNomeCompleto.text.toString())
+            usuario.putDouble("imc",imc)
+            usuario.putString("nivel_atividade",binding.spinnerAtividade.selectedItem.toString())
+            usuario.putString("sexo",if(binding.rbMasculino.isChecked) binding.rbMasculino.text.toString() else binding.rbFeminino.text.toString())
+            usuario.putString("peso",binding.etPeso.text.toString())
+            usuario.putString("altura",binding.etAltura.toString())
+            resultFormIntent.putExtras(usuario)
+
             startActivity(resultFormIntent)
         }
     }
