@@ -25,9 +25,9 @@ class ResultFormActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultFormBinding.inflate(layoutInflater)
         val view = binding.root
-        binding.tvNome.text = nome
-        binding.tvImc.text = imcFormat.format(imc)
-        binding.tvCategoriaImc.text = getImcCategory(imcFormat.format(imc))
+        binding.tvNome.text = "Nome Completo: ${extras.getString("nome_completo")}"
+        binding.tvImc.text = "IMC: ${imcFormat.format(imc)}"
+        binding.tvCategoriaImc.text = "Categoria IMC: ${getImcCategory(imcFormat.format(imc))}"
         setContentView(view)
 
         binding.btCalculoGastoCalorico.setOnClickListener {

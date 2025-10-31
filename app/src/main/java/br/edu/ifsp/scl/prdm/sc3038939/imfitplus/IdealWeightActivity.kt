@@ -19,8 +19,9 @@ class IdealWeightActivity: AppCompatActivity() {
         val extras = intent.extras!!
 
 
-        binding.tvNome.text = getString(R.string.nome_completo_variable,extras.getString("nome_completo"))
-        binding.tvPesoIdeal.text = weightFormat.format(extras.getDouble("peso_ideal",0.0))
+        binding.tvNome.text = "Nome Completo: ${extras.getString("nome_completo")}"
+        binding.tvPesoIdeal.text = "Peso Ideal: ${weightFormat.format(extras.getDouble("peso_ideal", 0.0))}"
+
         setContentView(view)
 
         binding.btVoltar.setOnClickListener {

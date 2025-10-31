@@ -17,8 +17,8 @@ class ResultCaloricActivity: AppCompatActivity() {
         val view = binding.root
 
         val extras = intent.extras!!
-        binding.tvNome.text = getString(R.string.nome_completo_variable,extras.getString("nome_completo"))
-        binding.tvGastoCalorico.text = getString(R.string.gasto_calorico_ideal,extras.getDouble("gasto_calorico"))
+        binding.tvNome.text = "Nome Completo: ${extras.getString("nome_completo")}"
+        binding.tvGastoCalorico.text = "Gasto Calorico: ${extras.getDouble("gasto_calorico")}"
 
         setContentView(view)
 
