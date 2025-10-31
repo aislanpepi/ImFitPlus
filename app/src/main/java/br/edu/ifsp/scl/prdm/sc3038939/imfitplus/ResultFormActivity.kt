@@ -37,7 +37,9 @@ class ResultFormActivity: AppCompatActivity() {
             else gastoCalorico = 655 + (9.6 * peso) + (1.8 * altura * 100) - (4.7 * idade)
 
             val resulCaloricIntent = Intent(this, ResultCaloricActivity::class.java)
+            extras.putString("categoria_imc",getImcCategory(imcFormat.format(imc)))
             extras.putDouble("gasto_calorico",gastoCalorico)
+            extras.putDouble("imc",imcFormat.format(imc).toDouble())
             resulCaloricIntent.putExtras(extras)
             startActivity(resulCaloricIntent)
         }

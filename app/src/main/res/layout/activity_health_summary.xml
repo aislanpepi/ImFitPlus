@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/toolbar"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resumo da Saude"
+        android:textSize="30sp"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/tv_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOME"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IMC"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_imc_categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CATEGORIA IMC"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_peso_ideal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PESO IDEAL"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_gasto_calorico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GASTO CALORICO DIARIO"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_rec_agua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECOMENDAÇÃO DE INGESTÃO DE AGUA"
+        android:layout_marginStart="10dp"/>
+</LinearLayout>

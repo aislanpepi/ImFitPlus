@@ -54,6 +54,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".HealthSummaryActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="HEALTH_SUMMARY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

@@ -22,4 +22,5 @@
     <string name="gasto_calorico_ideal">Gasto Calórico Diario Ideal: %.2f</string>+
     <string name="nome_completo_variable">Nome Completo: %s</string>
     <string name="logo_imfitplus">logo_imfitplus</string>
+    <string name="resumo_de_saude">Resumo de Saude</string>
 </resources>

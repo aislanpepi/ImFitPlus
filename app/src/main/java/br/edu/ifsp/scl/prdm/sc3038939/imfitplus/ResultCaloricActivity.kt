@@ -28,6 +28,7 @@ class ResultCaloricActivity: AppCompatActivity() {
 
         binding.btCalculoPesoIdeal.setOnClickListener{
             val calculoPeso = Intent(this, IdealWeightActivity::class.java)
+            extras.putDouble("gasto_calorico",gastoFormat.format(extras.getDouble("gasto_calorico")).toDouble())
             extras.putDouble("peso_ideal",pesoIdeal)
             calculoPeso.putExtras(extras)
             startActivity(calculoPeso)
