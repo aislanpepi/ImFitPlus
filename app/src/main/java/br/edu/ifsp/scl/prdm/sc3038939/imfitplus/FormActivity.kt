@@ -49,11 +49,11 @@ class FormActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if(idadeStr.isEmpty() || pesoStr.toDouble() <= 0){
+            if(pesoStr.isEmpty() || pesoStr.toDouble() <= 0){
                 Toast.makeText(this,"Campo peso é invalido.",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(alturaStr.toDouble() <= 0){
+            if(alturaStr.isEmpty() || alturaStr.toDouble() <= 0){
                 Toast.makeText(this,"Campo altura é invalido.",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
