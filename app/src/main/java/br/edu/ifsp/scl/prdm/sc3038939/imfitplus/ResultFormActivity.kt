@@ -41,6 +41,10 @@ class ResultFormActivity: AppCompatActivity() {
             resulCaloricIntent.putExtras(extras)
             startActivity(resulCaloricIntent)
         }
+
+        binding.btVoltar.setOnClickListener {
+            finish()
+        }
     }
 
     fun getImcCategory(imc: String): String {

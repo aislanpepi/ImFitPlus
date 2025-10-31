@@ -30,5 +30,9 @@ class ResultCaloricActivity: AppCompatActivity() {
             calculoPeso.putExtras(extras)
             startActivity(calculoPeso)
         }
+
+        binding.btVoltar.setOnClickListener {
+            finish()
+        }
     }
 }

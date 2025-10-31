@@ -17,5 +17,9 @@ class IdealWeightActivity: AppCompatActivity() {
         binding.tvNome.text = getString(R.string.nome_completo_variable,extras.getString("nome_completo"))
         binding.tvPesoIdeal.text = extras.getDouble("peso_ideal",0.0).toString()
         setContentView(view)
+
+        binding.btVoltar.setOnClickListener {
+            finish()
+        }
     }
 }
