@@ -33,9 +33,9 @@ class FormActivity : AppCompatActivity() {
 
         binding.btCalculoImc.setOnClickListener {
             val nome = binding.etNomeCompleto.text.toString().trim()
-            val idadeStr = binding.etIdade.text.toString().trim()
-            val pesoStr = binding.etPeso.text.toString().trim()
-            val alturaStr = binding.etAltura.text.toString().trim()
+            val idade = binding.etIdade.text.toString().trim().toIntOrNull()
+            val peso = binding.etPeso.text.toString().trim().toDoubleOrNull()
+            val altura = binding.etAltura.text.toString().trim().toDoubleOrNull()
 
             val resultFormIntent = Intent(this, ResultFormActivity::class.java)
 
@@ -44,16 +44,16 @@ class FormActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if(idadeStr.isEmpty() || idadeStr.toInt() <= 0 || idadeStr.toInt() > 150){
+            if(idade == null || idade <= 0 || idade > 150){
                 Toast.makeText(this,"Campo idade é invalido.",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if(pesoStr.isEmpty() || pesoStr.toDouble() <= 0){
+            if(peso == null || peso <= 0){
                 Toast.makeText(this,"Campo peso é invalido.",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(alturaStr.isEmpty() || alturaStr.toDouble() <= 0){
+            if(altura == null || altura <= 0){
                 Toast.makeText(this,"Campo altura é invalido.",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -61,13 +61,13 @@ class FormActivity : AppCompatActivity() {
             val usuario = Bundle()
 
             usuario.putString("nome_completo",nome)
-            usuario.putInt("idade", idadeStr.toInt())
-            usuario.putDouble("peso",pesoStr.toDouble())
+            usuario.putInt("idade", idade)
+            usuario.putDouble("peso",peso)
             usuario.putString("sexo",if(binding.rbMasculino.isChecked) binding.rbMasculino.text.toString()
                                     else binding.rbFeminino.text.toString())
-            usuario.putDouble("altura",alturaStr.toDouble())
+            usuario.putDouble("altura",altura)
             usuario.putString("nivel_atividade",binding.spinnerAtividade.selectedItem.toString())
-            val imc = pesoStr.toDouble() / alturaStr.toDouble().pow(2.0)
+            val imc = peso / altura.pow(2.0)
             usuario.putDouble("imc",imc)
 
             resultFormIntent.putExtras(usuario)

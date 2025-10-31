@@ -1,6 +1,7 @@
 package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
 
 import android.content.Intent
+import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultFormBinding
@@ -15,10 +16,11 @@ class ResultCaloricActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultGastoBinding.inflate(layoutInflater)
         val view = binding.root
+        val gastoFormat = DecimalFormat("####.##")
 
         val extras = intent.extras!!
         binding.tvNome.text = "Nome Completo: ${extras.getString("nome_completo")}"
-        binding.tvGastoCalorico.text = "Gasto Calorico: ${extras.getDouble("gasto_calorico")}"
+        binding.tvGastoCalorico.text = "Gasto Calorico: ${gastoFormat.format(extras.getDouble("gasto_calorico"))}"
 
         setContentView(view)
 
