@@ -30,7 +30,6 @@ class HealthSummaryActivity: AppCompatActivity() {
         binding.tvGastoCalorico.text = "Gasto Calorico Diario: ${gastoCalorico}"
         binding.tvRecAgua.text = "Ingestão de Agua Recomendada: ${format.format(ingestaoAgua)}L"
 
-
         val view = binding.root
         setContentView(view)
     }

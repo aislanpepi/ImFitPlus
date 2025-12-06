@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.R
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityFormBinding
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
 import kotlin.math.pow
 
 class FormActivity : AppCompatActivity() {
@@ -57,6 +58,7 @@ class FormActivity : AppCompatActivity() {
             }
 
             val usuario = Bundle()
+            val person = Person(nome,idade,peso,altura)
 
             usuario.putString("nome_completo",nome)
             usuario.putInt("idade", idade)
