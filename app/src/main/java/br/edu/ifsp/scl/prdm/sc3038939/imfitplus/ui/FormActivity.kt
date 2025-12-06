@@ -7,8 +7,10 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.R
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityFormBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
+import kotlin.getValue
 import kotlin.math.pow
 
 class FormActivity : AppCompatActivity() {
@@ -28,6 +30,10 @@ class FormActivity : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
+        }
+
+        val mainController: MainController by lazy {
+            MainController(this)
         }
 
         binding.btCalculoImc.setOnClickListener {
@@ -58,7 +64,6 @@ class FormActivity : AppCompatActivity() {
             }
 
             val usuario = Bundle()
-            val person = Person(nome,idade,peso,altura)
 
             usuario.putString("nome_completo",nome)
             usuario.putInt("idade", idade)
@@ -71,6 +76,10 @@ class FormActivity : AppCompatActivity() {
             usuario.putDouble("imc",imc)
 
             resultFormIntent.putExtras(usuario)
+
+            val person = Person(name=nome,age=idade,weight=peso, height=altura)
+
+            mainController.insertPerson(person)
 
             startActivity(resultFormIntent)
         }

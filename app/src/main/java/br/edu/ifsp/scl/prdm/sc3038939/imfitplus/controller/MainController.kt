@@ -1,28 +1,24 @@
 package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller
 
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.repository.PersonRepository
-import kotlinx.coroutines.flow.Flow
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.PersonSqlite
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.dao.PersonDao
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui.FormActivity
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui.MainActivity
 
-class MainController(private val personRepository: PersonRepository) {
+class MainController(mainActivity: FormActivity) {
 
-    fun getAllPersons(): Flow<List<Person>> {
-        return personRepository.getAllPersons()
-    }
+    private val personDao: PersonDao = PersonSqlite(mainActivity)
 
-    suspend fun getPersonById(id: Long): Person? {
-        return personRepository.getPersonById(id)
-    }
+    fun getAllPersons(): MutableList<Person> = personDao.getAllPersons()
 
-    suspend fun insertPerson(person: Person): Long {
-        return personRepository.insertPerson(person)
-    }
 
-    suspend fun updatePerson(person: Person) {
-        personRepository.updatePerson(person)
-    }
+    fun getPersonById(id: Long) = personDao.getPersonById(id)
 
-    suspend fun deletePerson(person: Person) {
-        personRepository.deletePerson(person)
-    }
+    fun insertPerson(person: Person) = personDao.insertPerson(person)
+
+
+    fun updatePerson(person: Person) = personDao.updatePerson(person)
+
+    fun deletePerson(person: Person) = personDao.deletePerson(person)
 }
