@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ImFitPlus">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FormActivity"
+        <activity android:name=".ui.FormActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="FORM"/>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ResultFormActivity"
+        <activity android:name=".ui.ResultFormActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="RESULT_FORM"/>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ResultCaloricActivity"
+        <activity android:name=".ui.ResultCaloricActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="RESULT_CALORIC"/>
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".IdealWeightActivity"
+        <activity android:name=".ui.IdealWeightActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="IDEAL_WEIGHT"/>
@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".HealthSummaryActivity"
+        <activity android:name=".ui.HealthSummaryActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="HEALTH_SUMMARY"/>

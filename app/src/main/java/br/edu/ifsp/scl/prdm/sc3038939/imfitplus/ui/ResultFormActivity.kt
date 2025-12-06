@@ -1,10 +1,8 @@
-package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
+package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
 import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultFormBinding
 

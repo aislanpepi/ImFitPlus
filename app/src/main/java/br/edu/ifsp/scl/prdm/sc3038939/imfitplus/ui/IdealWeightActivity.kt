@@ -1,11 +1,9 @@
-package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
+package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
 import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultFormBinding
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultGastoBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultIdealWeightBinding
 
 class IdealWeightActivity: AppCompatActivity() {

@@ -1,12 +1,10 @@
-package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
+package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
 import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultFormBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityResultGastoBinding
-import java.lang.Math.pow
 import kotlin.math.pow
 
 class ResultCaloricActivity: AppCompatActivity() {

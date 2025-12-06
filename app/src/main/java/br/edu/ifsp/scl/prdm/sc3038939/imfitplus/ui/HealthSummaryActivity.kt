@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.prdm.sc3038939.imfitplus
+package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
 import android.icu.text.DecimalFormat
 import android.os.Bundle
