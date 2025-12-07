@@ -23,4 +23,8 @@
     <string name="nome_completo_variable">Nome Completo: %s</string>
     <string name="logo_imfitplus">logo_imfitplus</string>
     <string name="resumo_de_saude">Resumo de Saude</string>
+    <string name="name">Name</string>
+    <string name="email">email</string>
+    <string name="adicionar_novo_registro">Adicionar Novo Registro</string>
+    <string name="retornar_ao_hist_rico">Retornar ao Histórico</string>
 </resources>

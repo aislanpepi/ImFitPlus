@@ -4,9 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <include layout="@layout/toolbar"/>
+
     <ListView
         android:id="@+id/l_history"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bt_adicionar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="@string/adicionar_novo_registro"
+        android:layout_margin="10dp"/>
 </LinearLayout>

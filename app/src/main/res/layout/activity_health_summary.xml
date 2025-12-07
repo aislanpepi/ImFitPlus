@@ -48,4 +48,10 @@
         android:layout_height="wrap_content"
         android:text="RECOMENDAÇÃO DE INGESTÃO DE AGUA"
         android:layout_marginStart="10dp"/>
+    <Button
+        android:id="@+id/bt_retornar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/retornar_ao_hist_rico"
+        android:layout_margin="10dp"/>
 </LinearLayout>

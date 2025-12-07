@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
+import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -32,5 +33,10 @@ class HealthSummaryActivity: AppCompatActivity() {
 
         val view = binding.root
         setContentView(view)
+
+        binding.btRetornar.setOnClickListener {
+            val historyIntent = Intent(this, HistoryActivity::class.java)
+            startActivity(historyIntent)
+        }
     }
 }

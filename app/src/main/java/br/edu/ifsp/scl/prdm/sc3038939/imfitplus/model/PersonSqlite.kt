@@ -7,7 +7,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.dao.PersonDao
-import kotlinx.coroutines.flow.Flow
 import java.sql.SQLException
 
 class PersonSqlite(context: Context): PersonDao {
@@ -23,7 +22,7 @@ class PersonSqlite(context: Context): PersonDao {
         private val HEIGHT_COLUMN = "height"
 
         val CREATE_PERSON_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $PERSON_TABLE (" +
-             "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY, " +
+             "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
              "$NAME_COLUMN TEXT NOT NULL, " +
              "$AGE_COLUMN INTEGER NOT NULL, " +
              "$WEIGHT_COLUMN DECIMAL(4,2) NOT NULL, " +

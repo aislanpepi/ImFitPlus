@@ -4,9 +4,9 @@ import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.PersonSqlite
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.dao.PersonDao
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui.FormActivity
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui.MainActivity
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui.HistoryActivity
 
-class MainController(activity: FormActivity) {
+class HistoryController(activity: HistoryActivity) {
 
     private val personDao: PersonDao = PersonSqlite(activity)
 
