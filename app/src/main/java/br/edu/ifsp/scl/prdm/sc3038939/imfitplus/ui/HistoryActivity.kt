@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.adapter.PersonAdapter
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.HistoryController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityHistoryBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
@@ -39,14 +38,9 @@ class HistoryActivity: AppCompatActivity() {
             val formIntent = Intent(this, FormActivity::class.java)
             startActivity(formIntent)
         }
+
+        binding.lHistory.onItemClickListener
     }
-
-    override fun onResume() {
-        super.onResume()
-        fillInfoList()
-    }
-
-
 
     private fun fillInfoList() {
         personsList.clear()

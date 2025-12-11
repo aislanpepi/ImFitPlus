@@ -17,6 +17,8 @@ class PersonSqlite(context: Context): PersonDao {
         private const val ID_COLUMN = "id"
         private const val NAME_COLUMN = "name"
         private const val AGE_COLUMN = "age"
+
+        private const val GENDER_COLUMN = "gender"
         private const val WEIGHT_COLUMN = "weight"
         private const val HEIGHT_COLUMN = "height"
 
@@ -25,7 +27,8 @@ class PersonSqlite(context: Context): PersonDao {
                 "$NAME_COLUMN TEXT NOT NULL, " +
                 "$AGE_COLUMN INTEGER NOT NULL, " +
                 "$WEIGHT_COLUMN REAL NOT NULL, " +
-                "$HEIGHT_COLUMN REAL NOT NULL);"
+                "$HEIGHT_COLUMN REAL NOT NULL, " +
+                "$GENDER_COLUMN TEXT NOT NULL);"
     }
 
     private val imfitplusDatabase: SQLiteDatabase = context.openOrCreateDatabase(
@@ -102,6 +105,7 @@ class PersonSqlite(context: Context): PersonDao {
         put(AGE_COLUMN, age)
         put(WEIGHT_COLUMN, weight)
         put(HEIGHT_COLUMN, height)
+        put(GENDER_COLUMN, gender)
     }
 
     private fun Cursor.toPerson() = Person(
@@ -109,6 +113,7 @@ class PersonSqlite(context: Context): PersonDao {
         getString(getColumnIndexOrThrow(NAME_COLUMN)),
         getInt(getColumnIndexOrThrow(AGE_COLUMN)),
         getDouble(getColumnIndexOrThrow(WEIGHT_COLUMN)),
-        getDouble(getColumnIndexOrThrow(HEIGHT_COLUMN))
+        getDouble(getColumnIndexOrThrow(HEIGHT_COLUMN)),
+        getString(getColumnIndexOrThrow(GENDER_COLUMN))
     )
 }

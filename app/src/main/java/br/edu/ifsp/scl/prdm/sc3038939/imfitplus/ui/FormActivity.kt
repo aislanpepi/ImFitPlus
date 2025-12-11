@@ -36,11 +36,18 @@ class FormActivity : AppCompatActivity() {
             MainController(this)
         }
 
+        var sexo: String
+
         binding.btCalculoImc.setOnClickListener {
             val nome = binding.etNomeCompleto.text.toString().trim()
             val idade = binding.etIdade.text.toString().trim().toIntOrNull()
             val peso = binding.etPeso.text.toString().trim().toDoubleOrNull()
             val altura = binding.etAltura.text.toString().trim().toDoubleOrNull()
+            if (binding.rbMasculino.isChecked) {
+               sexo = "Masculino"
+            } else {
+                sexo = "Feminino"
+            }
 
             val resultFormIntent = Intent(this, ResultFormActivity::class.java)
 
@@ -77,7 +84,7 @@ class FormActivity : AppCompatActivity() {
 
             resultFormIntent.putExtras(usuario)
 
-            val person = Person(name=nome,age=idade,weight=peso, height=altura)
+            val person = Person(name=nome,age=idade,weight=peso, height=altura, gender=sexo)
 
             mainController.insertPerson(person)
 
