@@ -3,17 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/toolbar"/>
+
+    <Button
+        android:id="@+id/bt_adicionar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adicionar_novo_registro"
+        android:layout_margin="10dp"/>
 
     <ListView
         android:id="@+id/l_history"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/bt_adicionar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/adicionar_novo_registro"
-        android:layout_margin="10dp"/>
 </LinearLayout>

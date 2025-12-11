@@ -2,10 +2,12 @@ package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.adapter.PersonAdapter
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.HistoryController
+import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityHistoryBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
 
@@ -16,8 +18,8 @@ class HistoryActivity: AppCompatActivity() {
     private val personAdapter: PersonAdapter by lazy {
         PersonAdapter(this, personsList)
     }
-    private val historyController: HistoryController by lazy {
-        HistoryController(this)
+    private val historyController: MainController by lazy {
+        MainController(this)
     }
 
 
@@ -39,13 +41,21 @@ class HistoryActivity: AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        fillInfoList()
+    }
+
 
 
     private fun fillInfoList() {
         personsList.clear()
         Thread {
-            personsList.addAll(historyController.getAllPersons())
-            personAdapter.notifyDataSetChanged()
-        }
+            val persons = historyController.getAllPersons()
+            runOnUiThread {
+                personsList.addAll(persons)
+                personAdapter.notifyDataSetChanged()
+            }
+        }.start()
     }
 }

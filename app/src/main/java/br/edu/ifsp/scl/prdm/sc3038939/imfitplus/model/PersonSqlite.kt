@@ -12,21 +12,20 @@ import java.sql.SQLException
 class PersonSqlite(context: Context): PersonDao {
 
     companion object {
+        private const val IMFITPLUS_DATABASE_FILE = "imFitPlus"
+        private const val PERSON_TABLE = "person"
+        private const val ID_COLUMN = "id"
+        private const val NAME_COLUMN = "name"
+        private const val AGE_COLUMN = "age"
+        private const val WEIGHT_COLUMN = "weight"
+        private const val HEIGHT_COLUMN = "height"
 
-        private val IMFITPLUS_DATABASE_FILE = "imFitPlus"
-        private val PERSON_TABLE = "person"
-        private val ID_COLUMN = "id"
-        private val NAME_COLUMN = "name"
-        private val AGE_COLUMN = "age"
-        private val WEIGHT_COLUMN = "weight"
-        private val HEIGHT_COLUMN = "height"
-
-        val CREATE_PERSON_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $PERSON_TABLE (" +
-             "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-             "$NAME_COLUMN TEXT NOT NULL, " +
-             "$AGE_COLUMN INTEGER NOT NULL, " +
-             "$WEIGHT_COLUMN DECIMAL(4,2) NOT NULL, " +
-             "$HEIGHT_COLUMN DECIMAL(1,3) NOT NULL);"
+        const val CREATE_PERSON_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $PERSON_TABLE (" +
+                "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "$NAME_COLUMN TEXT NOT NULL, " +
+                "$AGE_COLUMN INTEGER NOT NULL, " +
+                "$WEIGHT_COLUMN REAL NOT NULL, " +
+                "$HEIGHT_COLUMN REAL NOT NULL);"
     }
 
     private val imfitplusDatabase: SQLiteDatabase = context.openOrCreateDatabase(
@@ -46,10 +45,12 @@ class PersonSqlite(context: Context): PersonDao {
 
     override fun getAllPersons(): MutableList<Person> {
         val personList: MutableList<Person> = mutableListOf()
-        val cursor = imfitplusDatabase.rawQuery("SELECT * FROM $PERSON_TABLE;",null)
+        val cursor = imfitplusDatabase.rawQuery("SELECT * FROM $PERSON_TABLE;", null)
 
-        while (cursor.moveToNext()) {
-            personList.add(cursor.toPerson())
+        cursor.use {
+            while (it.moveToNext()) {
+                personList.add(it.toPerson())
+            }
         }
 
         return personList
@@ -66,10 +67,12 @@ class PersonSqlite(context: Context): PersonDao {
             null
         )
 
-        return if (cursor.moveToFirst()) {
-            cursor.toPerson()
-        } else {
-            Person()
+        return cursor.use {
+            if (it.moveToFirst()) {
+                it.toPerson()
+            } else {
+                Person()
+            }
         }
     }
 
@@ -95,7 +98,6 @@ class PersonSqlite(context: Context): PersonDao {
     }
 
     private fun Person.toContentValues() = ContentValues().apply {
-        put(ID_COLUMN, id)
         put(NAME_COLUMN, name)
         put(AGE_COLUMN, age)
         put(WEIGHT_COLUMN, weight)
