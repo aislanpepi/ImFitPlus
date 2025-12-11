@@ -1,0 +1,11 @@
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Health (
+    var imc: Double,
+    var cateogoria: String,
+    var pesoIdeal: Double,
+    var gastoCalorico: Double,
+    var recAgua: Double
+): Parcelable

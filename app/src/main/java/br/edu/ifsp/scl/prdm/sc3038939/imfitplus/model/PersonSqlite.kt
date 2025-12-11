@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model
 
+import Health
 import android.content.ContentValues
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
@@ -17,18 +18,32 @@ class PersonSqlite(context: Context): PersonDao {
         private const val ID_COLUMN = "id"
         private const val NAME_COLUMN = "name"
         private const val AGE_COLUMN = "age"
-
         private const val GENDER_COLUMN = "gender"
         private const val WEIGHT_COLUMN = "weight"
         private const val HEIGHT_COLUMN = "height"
 
-        const val CREATE_PERSON_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $PERSON_TABLE (" +
-                "$ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                "$NAME_COLUMN TEXT NOT NULL, " +
-                "$AGE_COLUMN INTEGER NOT NULL, " +
-                "$WEIGHT_COLUMN REAL NOT NULL, " +
-                "$HEIGHT_COLUMN REAL NOT NULL, " +
-                "$GENDER_COLUMN TEXT NOT NULL);"
+        // ✅ NOVAS CONSTANTES
+        private const val IMC_COLUMN = "imc"
+        private const val CATEGORIA_COLUMN = "categoria"
+        private const val PESOIDEAL_COLUMN = "pesoIdeal"
+        private const val GASTOCALORICO_COLUMN = "gastoCalorico"
+        private const val RECAGUA_COLUMN = "recAgua"
+
+        const val CREATE_PERSON_TABLE_STATEMENT = """
+            CREATE TABLE IF NOT EXISTS $PERSON_TABLE (
+                $ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                $NAME_COLUMN TEXT NOT NULL,
+                $AGE_COLUMN INTEGER NOT NULL,
+                $WEIGHT_COLUMN REAL NOT NULL,
+                $HEIGHT_COLUMN REAL NOT NULL,
+                $GENDER_COLUMN TEXT NOT NULL,
+                $IMC_COLUMN REAL NOT NULL,
+                $CATEGORIA_COLUMN TEXT NOT NULL,
+                $PESOIDEAL_COLUMN REAL NOT NULL,
+                $GASTOCALORICO_COLUMN REAL NOT NULL,
+                $RECAGUA_COLUMN REAL NOT NULL
+            );
+        """
     }
 
     private val imfitplusDatabase: SQLiteDatabase = context.openOrCreateDatabase(
@@ -74,7 +89,15 @@ class PersonSqlite(context: Context): PersonDao {
             if (it.moveToFirst()) {
                 it.toPerson()
             } else {
-                Person()
+                Person(
+                    id = 0,
+                    name = "",
+                    age = 0,
+                    weight = 0.0,
+                    height = 0.0,
+                    gender = "",
+                    health = Health(0.0, "", 0.0, 0.0, 0.0)
+                )
             }
         }
     }
@@ -106,14 +129,27 @@ class PersonSqlite(context: Context): PersonDao {
         put(WEIGHT_COLUMN, weight)
         put(HEIGHT_COLUMN, height)
         put(GENDER_COLUMN, gender)
+
+        put(IMC_COLUMN, health.imc)
+        put(CATEGORIA_COLUMN, health.cateogoria)
+        put(PESOIDEAL_COLUMN, health.pesoIdeal)
+        put(GASTOCALORICO_COLUMN, health.gastoCalorico)
+        put(RECAGUA_COLUMN, health.recAgua)
     }
 
     private fun Cursor.toPerson() = Person(
-        getLong(getColumnIndexOrThrow(ID_COLUMN)),
-        getString(getColumnIndexOrThrow(NAME_COLUMN)),
-        getInt(getColumnIndexOrThrow(AGE_COLUMN)),
-        getDouble(getColumnIndexOrThrow(WEIGHT_COLUMN)),
-        getDouble(getColumnIndexOrThrow(HEIGHT_COLUMN)),
-        getString(getColumnIndexOrThrow(GENDER_COLUMN))
+        id = getLong(getColumnIndexOrThrow(ID_COLUMN)),
+        name = getString(getColumnIndexOrThrow(NAME_COLUMN)),
+        age = getInt(getColumnIndexOrThrow(AGE_COLUMN)),
+        weight = getDouble(getColumnIndexOrThrow(WEIGHT_COLUMN)),
+        height = getDouble(getColumnIndexOrThrow(HEIGHT_COLUMN)),
+        gender = getString(getColumnIndexOrThrow(GENDER_COLUMN)),
+        health = Health(
+            imc = getDouble(getColumnIndexOrThrow(IMC_COLUMN)),
+            cateogoria = getString(getColumnIndexOrThrow(CATEGORIA_COLUMN)),
+            pesoIdeal = getDouble(getColumnIndexOrThrow(PESOIDEAL_COLUMN)),
+            gastoCalorico = getDouble(getColumnIndexOrThrow(GASTOCALORICO_COLUMN)),
+            recAgua = getDouble(getColumnIndexOrThrow(RECAGUA_COLUMN))
+        )
     )
 }
