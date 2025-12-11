@@ -84,10 +84,6 @@ class FormActivity : AppCompatActivity() {
 
             resultFormIntent.putExtras(usuario)
 
-            val person = Person(name=nome,age=idade,weight=peso, height=altura, gender=sexo)
-
-            mainController.insertPerson(person)
-
             startActivity(resultFormIntent)
         }
     }

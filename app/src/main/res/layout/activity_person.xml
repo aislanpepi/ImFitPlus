@@ -57,8 +57,6 @@
         android:text="RECOMENDAÇÃO DE INGESTÃO DE AGUA"
         android:layout_marginStart="10dp"/>
 
-    <!-- -------- CAMPOS ADICIONADOS DA TABELA SQLITE -------- -->
-
     <TextView
         android:id="@+id/tv_peso"
         android:layout_width="wrap_content"

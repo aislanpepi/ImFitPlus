@@ -131,7 +131,7 @@ class PersonSqlite(context: Context): PersonDao {
         put(GENDER_COLUMN, gender)
 
         put(IMC_COLUMN, health.imc)
-        put(CATEGORIA_COLUMN, health.cateogoria)
+        put(CATEGORIA_COLUMN, health.categoria)
         put(PESOIDEAL_COLUMN, health.pesoIdeal)
         put(GASTOCALORICO_COLUMN, health.gastoCalorico)
         put(RECAGUA_COLUMN, health.recAgua)
@@ -146,7 +146,7 @@ class PersonSqlite(context: Context): PersonDao {
         gender = getString(getColumnIndexOrThrow(GENDER_COLUMN)),
         health = Health(
             imc = getDouble(getColumnIndexOrThrow(IMC_COLUMN)),
-            cateogoria = getString(getColumnIndexOrThrow(CATEGORIA_COLUMN)),
+            categoria = getString(getColumnIndexOrThrow(CATEGORIA_COLUMN)),
             pesoIdeal = getDouble(getColumnIndexOrThrow(PESOIDEAL_COLUMN)),
             gastoCalorico = getDouble(getColumnIndexOrThrow(GASTOCALORICO_COLUMN)),
             recAgua = getDouble(getColumnIndexOrThrow(RECAGUA_COLUMN))

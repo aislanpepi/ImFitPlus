@@ -48,10 +48,20 @@
         android:layout_height="wrap_content"
         android:text="RECOMENDAÇÃO DE INGESTÃO DE AGUA"
         android:layout_marginStart="10dp"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <Button
         android:id="@+id/bt_retornar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/retornar_ao_hist_rico"
         android:layout_margin="10dp"/>
+    <Button
+        android:id="@+id/bt_salvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar Usuario"
+        android:layout_margin="10dp"/>
+    </GridLayout>
 </LinearLayout>
