@@ -31,16 +31,16 @@ class ResultFormActivity: AppCompatActivity() {
 
         binding.btCalculoGastoCalorico.setOnClickListener {
 
-            var gastoCalorico = 0.0
+            var tmb = 0.0
 
             if(sexo == "Masculino")
-                gastoCalorico = 66 + (13.7 * peso) + (5 * altura * 100) - (6.8 * idade)
+                tmb = 66 + (13.7 * peso) + (5 * altura * 100) - (6.8 * idade)
             if(sexo == "Feminino")
-                gastoCalorico = 655 + (9.6 * peso) + (1.8 * altura * 100) - (4.7 * idade)
+                tmb = 655 + (9.6 * peso) + (1.8 * altura * 100) - (4.7 * idade)
 
             val resulCaloricIntent = Intent(this, ResultCaloricActivity::class.java)
             extras.putString("categoria_imc",categoria)
-            extras.putDouble("gasto_calorico",gastoCalorico)
+            extras.putDouble("tmb",tmb)
             extras.putDouble("imc",imc)
             resulCaloricIntent.putExtras(extras)
             startActivity(resulCaloricIntent)

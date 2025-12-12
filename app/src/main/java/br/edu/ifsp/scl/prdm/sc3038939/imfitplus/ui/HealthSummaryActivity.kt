@@ -2,7 +2,6 @@ package br.edu.ifsp.scl.prdm.sc3038939.imfitplus.ui
 
 import Health
 import android.content.Intent
-import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
@@ -29,7 +28,7 @@ class HealthSummaryActivity: AppCompatActivity() {
         val imc = extras.getDouble("imc")
         val catImc = extras.getString("categoria_imc")
         val pesoIdeal = extras.getDouble("peso_ideal")
-        val gastoCalorico = extras.getDouble("gasto_calorico")
+        val tmb = extras.getDouble("tmb")
 
         val ingestaoAgua = (peso * 350.0) / 1000.0
 
@@ -37,7 +36,7 @@ class HealthSummaryActivity: AppCompatActivity() {
         binding.tvImc.text = "IMC: %.2f".format(imc)
         binding.tvImcCategoria.text = "Categoria IMC: ${catImc}"
         binding.tvPesoIdeal.text = "Peso Ideal: %.2f Kg".format(pesoIdeal)
-        binding.tvGastoCalorico.text = "Gasto Calorico Diario: %.2f kcal".format(gastoCalorico)
+        binding.tvGastoCalorico.text = "Taxa Metabolica Basal: %.2f kcal".format(tmb)
         binding.tvRecAgua.text = "Ingestão de Agua Recomendada: %.2f L".format(ingestaoAgua)
 
         val view = binding.root
@@ -49,7 +48,7 @@ class HealthSummaryActivity: AppCompatActivity() {
         }
 
         binding.btSalvar.setOnClickListener {
-            val health = Health(imc, catImc.toString(), pesoIdeal, gastoCalorico, ingestaoAgua)
+            val health = Health(imc, catImc.toString(), pesoIdeal, tmb, ingestaoAgua)
 
             val person = Person(
                 name= nome.toString(),

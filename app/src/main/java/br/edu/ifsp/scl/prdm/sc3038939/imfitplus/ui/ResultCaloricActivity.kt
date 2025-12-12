@@ -17,10 +17,10 @@ class ResultCaloricActivity: AppCompatActivity() {
         val extras = intent.extras!!
 
         val nome = extras.getString("nome_completo")
-        val gastoCalorico = extras.getDouble("gasto_calorico")
+        val tmb = extras.getDouble("tmb")
 
         binding.tvNome.text = "Nome Completo: ${nome}"
-        binding.tvGastoCalorico.text = "Gasto Calorico: %.2f".format(gastoCalorico)
+        binding.tvGastoCalorico.text = "Taxa Metabolica Basal: %.2f".format(tmb)
 
         setContentView(view)
 
@@ -28,7 +28,7 @@ class ResultCaloricActivity: AppCompatActivity() {
 
         binding.btCalculoPesoIdeal.setOnClickListener{
             val calculoPeso = Intent(this, IdealWeightActivity::class.java)
-            extras.putDouble("gasto_calorico",gastoCalorico)
+            extras.putDouble("tmb",tmb)
             extras.putDouble("peso_ideal",pesoIdeal)
             calculoPeso.putExtras(extras)
             startActivity(calculoPeso)
