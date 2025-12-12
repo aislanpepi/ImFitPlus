@@ -14,11 +14,13 @@ class ResultCaloricActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultGastoBinding.inflate(layoutInflater)
         val view = binding.root
-        val gastoFormat = DecimalFormat("####.##")
-
         val extras = intent.extras!!
-        binding.tvNome.text = "Nome Completo: ${extras.getString("nome_completo")}"
-        binding.tvGastoCalorico.text = "Gasto Calorico: ${gastoFormat.format(extras.getDouble("gasto_calorico"))}"
+
+        val nome = extras.getString("nome_completo")
+        val gastoCalorico = extras.getDouble("gasto_calorico")
+
+        binding.tvNome.text = "Nome Completo: ${nome}"
+        binding.tvGastoCalorico.text = "Gasto Calorico: %.2f".format(gastoCalorico)
 
         setContentView(view)
 
@@ -26,7 +28,7 @@ class ResultCaloricActivity: AppCompatActivity() {
 
         binding.btCalculoPesoIdeal.setOnClickListener{
             val calculoPeso = Intent(this, IdealWeightActivity::class.java)
-            extras.putDouble("gasto_calorico",gastoFormat.format(extras.getDouble("gasto_calorico")).toDouble())
+            extras.putDouble("gasto_calorico",gastoCalorico)
             extras.putDouble("peso_ideal",pesoIdeal)
             calculoPeso.putExtras(extras)
             startActivity(calculoPeso)

@@ -30,16 +30,15 @@ class HealthSummaryActivity: AppCompatActivity() {
         val catImc = extras.getString("categoria_imc")
         val pesoIdeal = extras.getDouble("peso_ideal")
         val gastoCalorico = extras.getDouble("gasto_calorico")
-        val format = DecimalFormat("##.##")
 
         val ingestaoAgua = (peso * 350.0) / 1000.0
 
         binding.tvNome.text = "Nome: ${nome}"
-        binding.tvImc.text = "IMC: ${imc}"
+        binding.tvImc.text = "IMC: %.2f".format(imc)
         binding.tvImcCategoria.text = "Categoria IMC: ${catImc}"
-        binding.tvPesoIdeal.text = "Peso Ideal: ${pesoIdeal}"
-        binding.tvGastoCalorico.text = "Gasto Calorico Diario: ${gastoCalorico}"
-        binding.tvRecAgua.text = "Ingestão de Agua Recomendada: ${format.format(ingestaoAgua)}L"
+        binding.tvPesoIdeal.text = "Peso Ideal: %.2f Kg".format(pesoIdeal)
+        binding.tvGastoCalorico.text = "Gasto Calorico Diario: %.2f kcal".format(gastoCalorico)
+        binding.tvRecAgua.text = "Ingestão de Agua Recomendada: %.2f L".format(ingestaoAgua)
 
         val view = binding.root
         setContentView(view)
@@ -52,7 +51,13 @@ class HealthSummaryActivity: AppCompatActivity() {
         binding.btSalvar.setOnClickListener {
             val health = Health(imc, catImc.toString(), pesoIdeal, gastoCalorico, ingestaoAgua)
 
-            val person = Person(name= nome.toString(),age=idade,weight=peso, height=altura, gender= sexo.toString(), health=health)
+            val person = Person(
+                name= nome.toString(),
+                age=idade,
+                weight=peso,
+                height=altura,
+                gender= sexo.toString(),
+                health=health)
 
             mainController.insertPerson(person)
             val historyIntent = Intent(this, HistoryActivity::class.java)

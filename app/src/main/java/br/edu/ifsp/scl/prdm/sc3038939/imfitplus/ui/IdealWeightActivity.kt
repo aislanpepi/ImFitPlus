@@ -12,15 +12,15 @@ class IdealWeightActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultIdealWeightBinding.inflate(layoutInflater)
-
-        val weightFormat = DecimalFormat("###.##")
         val view = binding.root
         val extras = intent.extras!!
+        val nome = extras.getString("nome_completo")
+        val pesoIdeal = extras.getDouble("peso_ideal", 0.0)
 
 
-        binding.tvNome.text = "Nome Completo: ${extras.getString("nome_completo")}"
-        binding.tvPesoIdeal.text = "Peso Ideal: ${weightFormat.format(extras.getDouble("peso_ideal", 0.0))}"
-        extras.putDouble("peso_ideal",weightFormat.format(extras.getDouble("peso_ideal", 0.0)).toDouble())
+        binding.tvNome.text = "Nome Completo: ${nome}"
+        binding.tvPesoIdeal.text = "Peso Ideal: %.2f".format(pesoIdeal)
+        extras.putDouble("peso_ideal",pesoIdeal)
 
         setContentView(view)
 

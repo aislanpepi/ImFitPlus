@@ -36,8 +36,8 @@ class PersonAdapter( context: Context, private val personList: MutableList<Perso
         tlViewHolder.nameTv.text = person.name
         tlViewHolder.pesoTv.text = "Peso: " + person.weight.toString() + " Kg"
         tlViewHolder.alturaTv.text = "Altura: " + person.height.toString() + " M"
-        tlViewHolder.imcTv.text = "IMC: %.2f".format(person.health.imc.toString())
-        tlViewHolder.tmbTv.text = "TMB: %.2f".format(person.health.gastoCalorico.toString())
+        tlViewHolder.imcTv.text = "IMC: %.2f".format(person.health.imc)
+        tlViewHolder.tmbTv.text = "TMB: %.2f".format(person.health.gastoCalorico)
 
         return personTileView
     }
