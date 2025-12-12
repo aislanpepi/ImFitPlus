@@ -40,13 +40,53 @@
         android:id="@+id/tv_gasto_calorico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GASTO CALORICO DIARIO"
+        android:text="@string/gasto_calorico_diario"
         android:layout_marginStart="10dp"/>
     <TextView
         android:id="@+id/tv_rec_agua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RECOMENDAÇÃO DE INGESTÃO DE AGUA"
+        android:text="@string/recomenda_o_de_ingest_o_de_agua"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_fcmax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FCMAX"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_titulozona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Zonas de Treino"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_leve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZONA LEVE"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_queima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZONA QUEIMA DE GORDURA"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_aerobica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZONA AEROBICA"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tv_anaerobica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZONA ANAEROBICA"
         android:layout_marginStart="10dp"/>
     <GridLayout
         android:layout_width="match_parent"

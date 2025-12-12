@@ -7,5 +7,6 @@ data class Health (
     var categoria: String,
     var pesoIdeal: Double,
     var gastoCalorico: Double,
-    var recAgua: Double
+    var recAgua: Double,
+    var fcMax: Int
 ): Parcelable

@@ -10,6 +10,8 @@ import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.R
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityFormBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
+import java.time.LocalDate
+import java.time.Period
 import kotlin.getValue
 import kotlin.math.pow
 
@@ -36,7 +38,7 @@ class FormActivity : AppCompatActivity() {
 
         binding.btCalculoImc.setOnClickListener {
             val nome = binding.etNomeCompleto.text.toString().trim()
-            val idade = binding.etIdade.text.toString().trim().toIntOrNull()
+            val dataNasc = LocalDate.parse(binding.etDataNasc.text.toString().trim())
             val peso = binding.etPeso.text.toString().trim().toDoubleOrNull()
             val altura = binding.etAltura.text.toString().trim().toDoubleOrNull()
             if (binding.rbMasculino.isChecked) {
@@ -44,6 +46,8 @@ class FormActivity : AppCompatActivity() {
             } else {
                 sexo = "Feminino"
             }
+
+            val idade = calcularIdade(dataNasc)
 
             val resultFormIntent = Intent(this, ResultFormActivity::class.java)
 
@@ -69,7 +73,8 @@ class FormActivity : AppCompatActivity() {
             val usuario = Bundle()
 
             usuario.putString("nome_completo",nome)
-            usuario.putInt("idade", idade)
+            usuario.putInt("idade",idade)
+            usuario.putString("dataNasc", dataNasc.toString())
             usuario.putDouble("peso",peso)
             usuario.putString("sexo", sexo)
             usuario.putDouble("altura",altura)
@@ -82,5 +87,10 @@ class FormActivity : AppCompatActivity() {
             resultFormIntent.putExtras(usuario)
             startActivity(resultFormIntent)
         }
+    }
+
+    fun calcularIdade(dataNasc: LocalDate): Int {
+        val dataAtual = LocalDate.now()
+        return Period.between(dataNasc, dataAtual).years
     }
 }

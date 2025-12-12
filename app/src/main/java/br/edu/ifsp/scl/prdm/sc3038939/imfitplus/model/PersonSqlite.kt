@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.dao.PersonDao
 import java.sql.SQLException
+import java.time.LocalDate
 
 class PersonSqlite(context: Context): PersonDao {
 
@@ -17,7 +18,7 @@ class PersonSqlite(context: Context): PersonDao {
         private const val PERSON_TABLE = "person"
         private const val ID_COLUMN = "id"
         private const val NAME_COLUMN = "name"
-        private const val AGE_COLUMN = "age"
+        private const val DATANASC_COLUMN = "dataNasc"
         private const val GENDER_COLUMN = "gender"
         private const val WEIGHT_COLUMN = "weight"
         private const val HEIGHT_COLUMN = "height"
@@ -26,12 +27,13 @@ class PersonSqlite(context: Context): PersonDao {
         private const val PESOIDEAL_COLUMN = "pesoIdeal"
         private const val GASTOCALORICO_COLUMN = "gastoCalorico"
         private const val RECAGUA_COLUMN = "recAgua"
+        private const val FCMAX_COLUMN = "fcMax"
 
         const val CREATE_PERSON_TABLE_STATEMENT = """
             CREATE TABLE IF NOT EXISTS $PERSON_TABLE (
                 $ID_COLUMN INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 $NAME_COLUMN TEXT NOT NULL,
-                $AGE_COLUMN INTEGER NOT NULL,
+                $DATANASC_COLUMN DATE NOT NULL,
                 $WEIGHT_COLUMN REAL NOT NULL,
                 $HEIGHT_COLUMN REAL NOT NULL,
                 $GENDER_COLUMN TEXT NOT NULL,
@@ -39,7 +41,8 @@ class PersonSqlite(context: Context): PersonDao {
                 $CATEGORIA_COLUMN TEXT NOT NULL,
                 $PESOIDEAL_COLUMN REAL NOT NULL,
                 $GASTOCALORICO_COLUMN REAL NOT NULL,
-                $RECAGUA_COLUMN REAL NOT NULL
+                $RECAGUA_COLUMN REAL NOT NULL,
+                $FCMAX_COLUMN INTEGER NOT NULL
             );
         """
     }
@@ -90,11 +93,11 @@ class PersonSqlite(context: Context): PersonDao {
                 Person(
                     id = 0,
                     name = "",
-                    age = 0,
+                    dataNasc = LocalDate.now(),
                     weight = 0.0,
                     height = 0.0,
                     gender = "",
-                    health = Health(0.0, "", 0.0, 0.0, 0.0)
+                    health = Health(0.0, "", 0.0, 0.0, 0.0,0)
                 )
             }
         }
@@ -123,7 +126,7 @@ class PersonSqlite(context: Context): PersonDao {
 
     private fun Person.toContentValues() = ContentValues().apply {
         put(NAME_COLUMN, name)
-        put(AGE_COLUMN, age)
+        put(DATANASC_COLUMN, dataNasc.toString())
         put(WEIGHT_COLUMN, weight)
         put(HEIGHT_COLUMN, height)
         put(GENDER_COLUMN, gender)
@@ -133,12 +136,13 @@ class PersonSqlite(context: Context): PersonDao {
         put(PESOIDEAL_COLUMN, health.pesoIdeal)
         put(GASTOCALORICO_COLUMN, health.gastoCalorico)
         put(RECAGUA_COLUMN, health.recAgua)
+        put(FCMAX_COLUMN, health.fcMax)
     }
 
     private fun Cursor.toPerson() = Person(
         id = getLong(getColumnIndexOrThrow(ID_COLUMN)),
         name = getString(getColumnIndexOrThrow(NAME_COLUMN)),
-        age = getInt(getColumnIndexOrThrow(AGE_COLUMN)),
+        dataNasc = LocalDate.parse(getString(getColumnIndexOrThrow(DATANASC_COLUMN))),
         weight = getDouble(getColumnIndexOrThrow(WEIGHT_COLUMN)),
         height = getDouble(getColumnIndexOrThrow(HEIGHT_COLUMN)),
         gender = getString(getColumnIndexOrThrow(GENDER_COLUMN)),
@@ -147,7 +151,8 @@ class PersonSqlite(context: Context): PersonDao {
             categoria = getString(getColumnIndexOrThrow(CATEGORIA_COLUMN)),
             pesoIdeal = getDouble(getColumnIndexOrThrow(PESOIDEAL_COLUMN)),
             gastoCalorico = getDouble(getColumnIndexOrThrow(GASTOCALORICO_COLUMN)),
-            recAgua = getDouble(getColumnIndexOrThrow(RECAGUA_COLUMN))
+            recAgua = getDouble(getColumnIndexOrThrow(RECAGUA_COLUMN)),
+            fcMax = getInt(getColumnIndexOrThrow(FCMAX_COLUMN))
         )
     )
 }

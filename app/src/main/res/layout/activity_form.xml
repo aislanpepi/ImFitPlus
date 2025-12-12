@@ -38,12 +38,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <EditText
-            android:id="@+id/etIdade"
-            android:layout_width="100dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/idade"
-            android:inputType="number"/>
+            android:layout_marginEnd="5dp"
+            android:textSize="15sp"
+            android:text="@string/data_de_nascimento"/>
+        <EditText
+            android:id="@+id/etDataNasc"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="1970-01-01"
+            android:inputType="text"/>
+    </GridLayout>
+    <GridLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <EditText
             android:id="@+id/etPeso"
             android:hint="@string/peso"

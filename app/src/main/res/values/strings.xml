@@ -29,4 +29,7 @@
     <string name="retornar_ao_hist_rico">Retornar ao Histórico</string>
     <string name="retornar_ao_inicio">Retornar ao Inicio</string>
     <string name="tmb">TMB</string>
+    <string name="recomenda_o_de_ingest_o_de_agua">RECOMENDAÇÃO DE INGESTÃO DE AGUA</string>
+    <string name="gasto_calorico_diario">GASTO CALORICO DIARIO</string>
+    <string name="data_de_nascimento">Data de Nascimento:</string>
 </resources>

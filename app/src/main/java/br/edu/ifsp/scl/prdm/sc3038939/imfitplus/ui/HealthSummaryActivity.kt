@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityHealthSummaryBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
+import java.time.LocalDate
 
 class HealthSummaryActivity: AppCompatActivity() {
     private lateinit var binding: ActivityHealthSummaryBinding
@@ -22,14 +23,16 @@ class HealthSummaryActivity: AppCompatActivity() {
 
         val nome = extras.getString("nome_completo")
         val altura = extras.getDouble("altura")
-        val idade = extras.getInt("idade")
+        val dataNasc = LocalDate.parse(extras.getString("dataNasc"))
         val sexo = extras.getString("sexo")
         val peso = extras.getDouble("peso")
+        val idade = extras.getInt("idade")
         val imc = extras.getDouble("imc")
         val catImc = extras.getString("categoria_imc")
         val pesoIdeal = extras.getDouble("peso_ideal")
         val tmb = extras.getDouble("tmb")
-        val gastoDiario = extras.getDouble("gasto_diario")
+
+        val fcMax = 220 - idade
 
         val ingestaoAgua = (peso * 350.0) / 1000.0
 
@@ -38,7 +41,12 @@ class HealthSummaryActivity: AppCompatActivity() {
         binding.tvImcCategoria.text = "Categoria IMC: ${catImc}"
         binding.tvPesoIdeal.text = "Peso Ideal: %.2f Kg".format(pesoIdeal)
         binding.tvGastoCalorico.text = "Taxa Metabolica Basal: %.2f kcal".format(tmb)
-        binding.tvRecAgua.text = "Ingestão de Agua Recomendada: %.2f L".format(ingestaoAgua)
+        binding.tvRecAgua.text = "Ingestão de Agua Recomendada: %.1f L".format(ingestaoAgua)
+        binding.tvFcmax.text = "Frequencia cardiaca maxima: %d BPM".format(fcMax)
+        binding.tvLeve.text = "Zona Leve: %.1f BPM".format(fcMax * 0.5) + " - %.1f BPM".format(fcMax * 0.6)
+        binding.tvQueima.text = "Zona Queima de Gordura: %.1f BPM".format(fcMax * 0.6) + " - %.1f BPM".format(fcMax * 0.7)
+        binding.tvAerobica.text = "Zona aeróbica: %.1f BPM".format(fcMax * 0.7) + " - %.1f BPM".format(fcMax * 0.8)
+        binding.tvAnaerobica.text = "Zona anaeróbica: %.1f BPM".format(fcMax * 0.8) + " - %.1f BPM".format(fcMax * 0.9)
 
         val view = binding.root
         setContentView(view)
@@ -49,11 +57,11 @@ class HealthSummaryActivity: AppCompatActivity() {
         }
 
         binding.btSalvar.setOnClickListener {
-            val health = Health(imc, catImc.toString(), pesoIdeal, tmb, ingestaoAgua)
+            val health = Health(imc, catImc.toString(), pesoIdeal, tmb, ingestaoAgua, fcMax)
 
             val person = Person(
                 name= nome.toString(),
-                age=idade,
+                dataNasc = dataNasc,
                 weight=peso,
                 height=altura,
                 gender= sexo.toString(),
