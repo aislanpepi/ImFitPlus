@@ -21,8 +21,6 @@ class PersonSqlite(context: Context): PersonDao {
         private const val GENDER_COLUMN = "gender"
         private const val WEIGHT_COLUMN = "weight"
         private const val HEIGHT_COLUMN = "height"
-
-        // ✅ NOVAS CONSTANTES
         private const val IMC_COLUMN = "imc"
         private const val CATEGORIA_COLUMN = "categoria"
         private const val PESOIDEAL_COLUMN = "pesoIdeal"

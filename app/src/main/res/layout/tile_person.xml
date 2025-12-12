@@ -27,6 +27,18 @@
             android:layout_height="wrap_content"
             android:text="@string/altura"
             android:padding="5dp"/>
+        <TextView
+            android:id="@+id/imc_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/imc"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/tmb_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tmb"
+            android:padding="5dp"/>
     </GridLayout>
 
 </LinearLayout>

@@ -32,10 +32,6 @@ class FormActivity : AppCompatActivity() {
             spinner.adapter = adapter
         }
 
-        val mainController: MainController by lazy {
-            MainController(this)
-        }
-
         var sexo: String
 
         binding.btCalculoImc.setOnClickListener {
@@ -75,15 +71,15 @@ class FormActivity : AppCompatActivity() {
             usuario.putString("nome_completo",nome)
             usuario.putInt("idade", idade)
             usuario.putDouble("peso",peso)
-            usuario.putString("sexo",if(binding.rbMasculino.isChecked) binding.rbMasculino.text.toString()
-                                    else binding.rbFeminino.text.toString())
+            usuario.putString("sexo", sexo)
             usuario.putDouble("altura",altura)
             usuario.putString("nivel_atividade",binding.spinnerAtividade.selectedItem.toString())
+
             val imc = peso / altura.pow(2.0)
+
             usuario.putDouble("imc",imc)
 
             resultFormIntent.putExtras(usuario)
-
             startActivity(resultFormIntent)
         }
     }

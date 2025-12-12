@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.controller.MainController
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.databinding.ActivityHealthSummaryBinding
 import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.Person
-import br.edu.ifsp.scl.prdm.sc3038939.imfitplus.model.PersonSqlite
 
 class HealthSummaryActivity: AppCompatActivity() {
     private lateinit var binding: ActivityHealthSummaryBinding

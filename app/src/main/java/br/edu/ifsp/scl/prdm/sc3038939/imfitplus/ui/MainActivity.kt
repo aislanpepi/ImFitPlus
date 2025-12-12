@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.btComeceAqui.setOnClickListener {
             val historyIntent = Intent(this, HistoryActivity::class.java)
-            val formIntent = Intent(this, FormActivity::class.java)
             startActivity(historyIntent)
         }
     }

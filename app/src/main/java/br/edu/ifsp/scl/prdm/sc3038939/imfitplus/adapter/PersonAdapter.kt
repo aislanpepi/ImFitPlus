@@ -27,18 +27,20 @@ class PersonAdapter( context: Context, private val personList: MutableList<Perso
                 false
             ).apply {
                 personTileView = root
-                val tilePersonViewHolder = TilePersonViewHolder(nameTv,alturaTv, pesoTv)
+                val tilePersonViewHolder = TilePersonViewHolder(nameTv,alturaTv, pesoTv,imcTv,tmbTv)
                 personTileView.tag = tilePersonViewHolder
             }
         }
 
         val tlViewHolder = personTileView?.tag as TilePersonViewHolder
         tlViewHolder.nameTv.text = person.name
-        tlViewHolder.pesoTv.text = person.weight.toString()
-        tlViewHolder.alturaTv.text = person.height.toString()
+        tlViewHolder.pesoTv.text = "Peso: " + person.weight.toString() + " Kg"
+        tlViewHolder.alturaTv.text = "Altura: " + person.height.toString() + " M"
+        tlViewHolder.imcTv.text = "IMC: %.2f".format(person.health.imc.toString())
+        tlViewHolder.tmbTv.text = "TMB: %.2f".format(person.health.gastoCalorico.toString())
 
         return personTileView
     }
 
-    private data class TilePersonViewHolder(val nameTv: TextView, val alturaTv: TextView, val pesoTv: TextView)
+    private data class TilePersonViewHolder(val nameTv: TextView, val alturaTv: TextView, val pesoTv: TextView, val imcTv: TextView, val tmbTv: TextView)
 }
