@@ -29,6 +29,7 @@ class HealthSummaryActivity: AppCompatActivity() {
         val catImc = extras.getString("categoria_imc")
         val pesoIdeal = extras.getDouble("peso_ideal")
         val tmb = extras.getDouble("tmb")
+        val gastoDiario = extras.getDouble("gasto_diario")
 
         val ingestaoAgua = (peso * 350.0) / 1000.0
 
